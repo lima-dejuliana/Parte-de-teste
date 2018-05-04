@@ -116,17 +116,8 @@
         opacity: 0.6;
     }
 
-    .active,
     .demo:hover {
         opacity: 1;
-    }
-
-    .inativo {
-        display: none;
-    }
-
-    .ativo {
-        display: block;
     }
 
 </style>
@@ -139,7 +130,7 @@
                 <img class="demo cursor" src="img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
             </div>
             <div class="column">
-                <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(2)" alt="Mountains and fjords">
+                <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(2)" alt="Mountains fjords">
             </div>
             <div class="column">
                 <img class="demo cursor" src="img_nature.jpg" style="width:100%" onclick="currentSlide(3)" alt="Nature and sunrise">
@@ -159,85 +150,133 @@
         </div>
 
         <div class="container50">
-            <div class="slidePrimeiro">
-                <img src="img_sl1_trilha_wide.jpg" style="width:80%">
-            </div>
-            <div class="slidePrimeiro">
-                <img src="img_sl1_caminho_wide.jpg" style="width:80%">
+
+            <div id="minhaDiv">
+                <h3>Minha Div 1</h3>
+                <p>minha div teste 1</p>
+                <div class="slidePrimeiro">
+                    <img src="img_sl1_trilha_wide.jpg" style="width:80%">
+                </div>
+                <div class="slidePrimeiro">
+                    <img src="img_sl1_caminho_wide.jpg" style="width:80%">
+                </div>
             </div>
 
-            <div class="slideSegundo">
-                <img src="img_sl2_praia_wide.png" style="width:80%">
-            </div>
-            <div class="slideSegundo">
-                <img src="img_sl2_lago_wide.jpg" style="width:80%">
+            <div id="minhaDivDois">
+                <h3>Minha Div 2</h3>
+                <p>minha div teste 2</p>
+                <div class="slideSegundo">
+                    <img src="img_sl2_praia_wide.png" style="width:80%">
+                </div>
+                <div class="slideSegundo">
+                    <img src="img_sl2_lago_wide.jpg" style="width:80%">
+                </div>
             </div>
 
-            <div class="slideTerceiro">
-                <img src="img_sl3_outono_wide.jpg" style="width:80%">
+            <div id="minhaDivTres">
+                <h3>Minha Div 3</h3>
+                <p>minha div teste 3</p>
+                <div class="slideTerceiro">
+                    <img src="img_sl3_outono_wide.jpg" style="width:80%">
+                </div>
+                <div class="slideTerceiro">
+                    <img src="img_sl3_fall_wide.jpg" style="width:80%">
+                </div>
             </div>
-            <div class="slideTerceiro">
-                <img src="img_sl3_fall_wide.jpg" style="width:80%">
-            </div>
+
+
         </div>
     </div>
 
-    </body>
+</body>
 
-    <script>
-        var qualSlide;
-        var display;
+<script>
+    var qualSlide;
 
-        var slideIndex = 1;
-        showGaleria(slideIndex);
+    var slideIndex = 1;
+    showGaleria(slideIndex);
 
-        var slideId = 1;
-        escolherSlide(slideId);
+    var slideId = 1;
+    escolherSlide(slideId);
+    //        showSlide(slideId);
+
+    function currentSlide(n) {
+        showGaleria(slideIndex = n);
+        escolherSlide(slideId = n);
+        showSlide(slideId = n);
+    }
+
+
+    //        function Mudarestado(el) {
+    //        var display = document.getElementById(el).style.display;
+    //        if(display == "none")
+    //            document.getElementById(el).style.display = 'block';
+    //        else
+    //            document.getElementById(el).style.display = 'none';
+    //    }
+    //
+    function allOculto() {
+        document.getElementById("minhaDiv").style.display = 'none';
+        document.getElementById("minhaDivDois").style.display = 'none';
+        document.getElementById("minhaDivTres").style.display = 'none';
+    }
+
+    function mudarEstado() {
+        var display = slideDisplay.style.display;
+        if (display == "none")
+            slideDisplay.style.display = 'block';
+        else
+            slideDisplay.style.display = 'none';
+    }
+
+    function escolherSlide(n) {
+        allOculto();
+        if (n == 1) {
+            //                allOculto();
+            qualSlide = document.getElementsByClassName("slidePrimeiro");
+            slideDisplay = document.getElementById("minhaDiv");
+            //                mudarEstado();
+        }
+        if (n == 2) {
+            //                allOculto();
+            qualSlide = document.getElementsByClassName("slideSegundo");
+            slideDisplay = document.getElementById("minhaDivDois");
+            //                mudarEstado();
+        }
+        if (n == 3) {
+            //                allOculto();
+            qualSlide = document.getElementsByClassName("slideTerceiro");
+            slideDisplay = document.getElementById("minhaDivTres");
+            //                mudarEstado();
+        }
+        mudarEstado();
         showSlide(slideId);
+    }
 
-        function currentSlide(n) {
-            showGaleria(slideIndex = n);
-            escolherSlide(slideId = n);
-            showSlide(slideId = n);
+    function showGaleria(n) {
+        var i;
+        var galeria = document.getElementsByClassName("galeria");
+
+        for (i = 0; i < galeria.length; i++) {
+            galeria[i].style.display = "none";
         }
+        galeria[slideIndex - 1].style.display = "block";
+    }
 
-        function escolherSlide(n) {
-            if (n == 1) {
-                qualSlide = document.getElementsByClassName("slidePrimeiro");
-                }
-            if (n == 2) {
-                qualSlide = document.getElementsByClassName("slideSegundo");
-                }
-            if (n == 3) {
-                qualSlide = document.getElementsByClassName("slideTerceiro");
-            }
+
+    function showSlide(n) {
+        var i;
+        var slide = qualSlide;
+
+        for (i = 0; i < slide.length; i++) {
+            slide[i].style.display = "none";
         }
-
-        function showGaleria(n) {
-            var i;
-            var galeria = document.getElementsByClassName("galeria");
-
-            for (i = 0; i < galeria.length; i++) {
-                galeria[i].style.display = "none";
-            }
-            galeria[slideIndex - 1].style.display = "block";
+        slideId++;
+        if (slideId > slide.length) {
+            slideId = 1
         }
-
-
-        function showSlide(n) {
-            var i;
-            var slide = qualSlide;
-
-            for (i = 0; i < slide.length; i++) {
-                slide[i].style.display = "none";
-            }
-            slideId++;
-            if (slideId > slide.length) {
-                slideId = 1
-            }
-            slide[slideId - 1].style.display = "block";
-            setTimeout(showSlide, 3000);
-        }
-
-    </script>
+        slide[slideId - 1].style.display = "block";
+        setTimeout(showSlide, 3000);
+    }
+</script>
 </html>

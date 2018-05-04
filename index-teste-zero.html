@@ -1,11 +1,12 @@
 <html>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<!--<link rel="stylesheet" href="grid.css">-->
 <style>
 body {
   font-family: Arial;
   margin: 0;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -163,7 +164,7 @@ function showSlides(n) {
     //slide 2
 
     var slideIndex2 = 0;
-showSlides2();
+    showSlides2();
 
 function showSlides2() {
     var i;
@@ -185,10 +186,10 @@ function showSlides2() {
             if (n == 1) {
                 var primeiro = document.getElementsByClassName("slidePrimeiro");
             }
-if (n == 2) {
+            if (n == 2) {
                 var primeiro = document.getElementsByClassName("slideSegundo");
             }
-if (n == 3) {
+            if (n == 3) {
                 var primeiro = document.getElementsByClassName("slideTerceiro");
             }
 
@@ -205,4 +206,4 @@ if (n == 3) {
             primeiro[slideId-1].style.display = "block";
             setTimeout(showSlide(n), 3000);
         }
-</script>-->
+</script>
