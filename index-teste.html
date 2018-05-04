@@ -121,15 +121,11 @@
         opacity: 1;
     }
 
-    .slideshow-container {
+    .inativo {
         display: none;
     }
 
-    .oculto {
-        display: none;
-    }
-
-    .active {
+    .ativo {
         display: block;
     }
 
@@ -190,6 +186,7 @@
 
     <script>
         var qualSlide;
+        var display;
 
         var slideIndex = 1;
         showGaleria(slideIndex);
@@ -207,13 +204,12 @@
         function escolherSlide(n) {
             if (n == 1) {
                 qualSlide = document.getElementsByClassName("slidePrimeiro");
-            }
+                }
             if (n == 2) {
                 qualSlide = document.getElementsByClassName("slideSegundo");
-            }
+                }
             if (n == 3) {
                 qualSlide = document.getElementsByClassName("slideTerceiro");
-                qualSlide.style.display = "block";
             }
         }
 
